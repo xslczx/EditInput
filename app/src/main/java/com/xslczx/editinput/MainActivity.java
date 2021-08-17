@@ -16,11 +16,6 @@ public class MainActivity extends AppCompatActivity {
         mEditTextInput = findViewById(R.id.edit_text);
         mEditTextInput.setText("Hello World ！");
         mEditTextInput.setOnStateListener(new EditTextInputImpl.OnStateListener() {
-            @Override
-            public void onFinishComposing() {
-                Log.d(">>>", "finishComposing ");
-                mEditTextInput.clearFocus();
-            }
 
             @Override
             public void onExtractedText(ExtractedText extractedText) {

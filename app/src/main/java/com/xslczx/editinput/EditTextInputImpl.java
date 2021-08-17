@@ -104,7 +104,6 @@ public class EditTextInputImpl extends android.support.v7.widget.AppCompatEditTe
     }
 
     public interface OnStateListener {
-        void onFinishComposing();
 
         void onExtractedText(ExtractedText extractedText);
 
@@ -148,15 +147,6 @@ public class EditTextInputImpl extends android.support.v7.widget.AppCompatEditTe
                         && sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
             }
             return super.deleteSurroundingText(beforeLength, afterLength);
-        }
-
-        @Override
-        public boolean finishComposingText() {
-            boolean finishComposing = super.finishComposingText();
-            if (mOnStateListener != null && hasFocus()) {
-                mOnStateListener.onFinishComposing();
-            }
-            return finishComposing;
         }
 
         @Override

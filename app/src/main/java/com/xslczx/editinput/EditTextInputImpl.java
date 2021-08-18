@@ -92,7 +92,9 @@ public class EditTextInputImpl extends android.support.v7.widget.AppCompatEditTe
 
     @Override
     public InputConnection onCreateInputConnection(EditorInfo outAttrs) {
-        return new InnerInputConnection(super.onCreateInputConnection(outAttrs));
+        InputConnection onCreateInputConnection = super.onCreateInputConnection(outAttrs);
+        if (onCreateInputConnection == null) return null;
+        return new InnerInputConnection(onCreateInputConnection);
     }
 
     public interface OnKeyClickListener {
@@ -118,7 +120,7 @@ public class EditTextInputImpl extends android.support.v7.widget.AppCompatEditTe
 
 
         public InnerInputConnection(InputConnection target) {
-            super(target, false);
+            super(target, true);
         }
 
         @Override
